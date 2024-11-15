@@ -14,5 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('client.pages.home');
 });
+Route::get('/login', function () {
+    return view('auth.login');
+});
+Route::get('/clock-in', function () {
+    return view('client.pages.clock-in');
+});
+
+
+
