@@ -54,3 +54,15 @@
         </a>
     </form>
 </li>
+{{-- 
+<li class="sidebar-item">
+    <a href="{{ route('logout') }}" class="sidebar-link"
+       onclick="event.preventDefault(); document.getElementById('logout').submit();">
+        <i class="bi bi-box-arrow-left text-danger"></i>
+        <span>Logout</span>
+    </a>
+    <form id="logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+</li> --}}
+

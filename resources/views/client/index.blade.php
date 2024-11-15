@@ -7,6 +7,7 @@
 </head>
 <body>
     <div class="mx-5 mt-2 md:mt-24 mb-10  ">
+        {{ Auth::user()->name}}
         <h1 class=" text-center">Clock In</h1>
 
         <form method="POST" action=""
@@ -83,7 +84,7 @@
                     </div>
                 </div>
 
-                    
+
                 <div class="mb-5 relative">
                     <label for="email" class="form-label block mb-2 text-sm font-medium ">Email</label>
                     <div class="input-with-icon">

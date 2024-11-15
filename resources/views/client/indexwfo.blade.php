@@ -8,6 +8,7 @@
 <body>
     <div class="mx-5 mt-2 md:mt-24 mb-10  ">
         <h1 class=" text-center">Clock In WFO`</h1>
+        {{ Auth::user()->name}}
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -34,7 +35,7 @@
                     <div class="input-with-icon">
                         <input type="text" id="user_id" name="user_id"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10 "
-                            placeholder="Masukkan nama" required value="1">
+                            placeholder="Masukkan nama" required value="{{ Auth::user()->id}}">
                         <span class="icon">
                             <i class="fas fa-user text-gray-400"></i>
                         </span>
