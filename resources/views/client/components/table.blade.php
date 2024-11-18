@@ -21,72 +21,53 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="border-b border-gray-300">
-                    <td class="text-center p-5">Monday <br> <span class="text-gray-400">28 Oct</span></td>
-                    <td class="text-center p-5">07.30 a.m <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center p-5">16.30 pm <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center text-blue-500 p-5"> <i class="fa-solid fa-circle-check"></i> Done</td>
-                    <td class="text-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa distinctio ut
-                        id
-                        nam, incidunt
-                        laborum esse voluptatibus impedit harum perspiciatis consectetur dignissimos eos voluptatem a in
-                        quidem corporis tempore mollitia?</td>
-                </tr>
-                <tr class="border-b border-gray-300">
-                    <td class="text-center p-5">Monday <br> <span class="text-gray-400">28 Oct</span></td>
-                    <td class="text-center p-5">07.30 a.m <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center p-5">16.30 pm <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center text-blue-500 p-5"> <i class="fa-solid fa-circle-check"></i> Done</td>
-                    <td class="text-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa distinctio ut
-                        id
-                        nam, incidunt
-                        laborum esse voluptatibus impedit harum perspiciatis consectetur dignissimos eos voluptatem a in
-                        quidem corporis tempore mollitia?</td>
-                </tr>
-                <tr class="border-b border-gray-300">
-                    <td class="text-center p-5">Monday <br> <span class="text-gray-400">28 Oct</span></td>
-                    <td class="text-center p-5">07.30 a.m <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center p-5">16.30 pm <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center text-blue-500 p-5"> <i class="fa-solid fa-circle-check"></i> Done</td>
-                    <td class="text-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa distinctio ut
-                        id
-                        nam, incidunt
-                        laborum esse voluptatibus impedit harum perspiciatis consectetur dignissimos eos voluptatem a in
-                        quidem corporis tempore mollitia?</td>
-                </tr>
-                <tr class="border-b border-gray-300">
-                    <td class="text-center p-5">Monday <br> <span class="text-gray-400">28 Oct</span></td>
-                    <td class="text-center p-5">07.30 a.m <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center p-5">16.30 pm <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center text-blue-500 p-5"> <i class="fa-solid fa-circle-check"></i> Done</td>
-                    <td class="text-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa distinctio ut
-                        id
-                        nam, incidunt
-                        laborum esse voluptatibus impedit harum perspiciatis consectetur dignissimos eos voluptatem a in
-                        quidem corporis tempore mollitia?</td>
-                </tr>
-                <tr class="border-b border-gray-300">
-                    <td class="text-center p-5">Monday <br> <span class="text-gray-400">28 Oct</span></td>
-                    <td class="text-center p-5">07.30 a.m <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center p-5">16.30 pm <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center text-blue-500 p-5"> <i class="fa-solid fa-circle-check"></i> Done</td>
-                    <td class="text-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa distinctio ut
-                        id
-                        nam, incidunt
-                        laborum esse voluptatibus impedit harum perspiciatis consectetur dignissimos eos voluptatem a in
-                        quidem corporis tempore mollitia?</td>
-                </tr>
-                <tr class="border-b border-gray-300">
-                    <td class="text-center p-5">Monday <br> <span class="text-gray-400">28 Oct</span></td>
-                    <td class="text-center p-5">07.30 a.m <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center p-5">16.30 pm <br> <span class="text-gray-400"> WFO </span></td>
-                    <td class="text-center text-blue-500 p-5"> <i class="fa-solid fa-circle-check"></i> Done</td>
-                    <td class="text-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa distinctio ut
-                        id
-                        nam, incidunt
-                        laborum esse voluptatibus impedit harum perspiciatis consectetur dignissimos eos voluptatem a in
-                        quidem corporis tempore mollitia?</td>
-                </tr>
+                @if (auth()->check() && count($absents) > 0)
+                    @foreach ($absents as $absent)
+                        <tr class="border-b border-gray-300">
+                            <td class="text-center p-5">
+                                {{ \Carbon\Carbon::parse($absent->created_at)->format('l') }} <br>
+                                <span
+                                    class="text-gray-400">{{ \Carbon\Carbon::parse($absent->created_at)->format('d M') }}</span>
+                            </td>
+                            <td class="text-center p-5">
+                                {{ $absent->clockIn }} <br>
+                                <span class="text-gray-400">{{ $absent->typeWork }}</span>
+                            </td>
+                            <td class="text-center p-5">
+                                {{ $absent->clockOut ?? 'N/A' }} <br>
+                                <span class="text-gray-400">{{ $absent->typeWork }}</span>
+                            </td>
+                            <td class="text-center text-blue-500 p-5">
+                                @if ($absent->clockOut)
+                                    <i class="fa-solid fa-circle-check"></i> Done
+                                @else
+                                    <span class="text-gray-400">Pending</span>
+                                @endif
+                            </td>
+                            <td class="text-start">
+                                {{ $absent->todaysActivity ?? 'No details available' }}
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr class="border-b border-gray-300">
+                        <td class="text-center p-5">
+                            -
+                        </td>
+                        <td class="text-center p-5">
+                            -
+                        </td>
+                        <td class="text-center p-5">
+                            -
+                        </td>
+                        <td class="text-center text-blue-500 p-5">
+                            -
+                        <td class="text-start">
+                            -
+                        </td>
+                    </tr>
+
+                @endif
 
             </tbody>
         </table>

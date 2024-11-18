@@ -2,6 +2,7 @@
 @section('content')
     {{-- Home --}}
     <section class="relative">
+
         <div class="z-10">
             @include('client.components.hero')
         </div>
@@ -12,7 +13,9 @@
 
         @include('client.components.descrip')
 
-        @include('client.components.nav-clockIn')
+        <div id="attendance" class="py-20">
+            @include('client.components.nav-clockIn')
+        </div>
 
         @include('client.components.table')
 

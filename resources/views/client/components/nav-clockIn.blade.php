@@ -13,7 +13,7 @@
                 <img src="{{ asset('image/woman.png') }}" alt="">
             </div>
         </a>
-        <a href="/clock-out"
+        <a href="/clockout"
             class="lg:w-1/3 sm:w-1/2 px-6 py-2 border-4 border-white bg-gradient-to-br from-red-400 to-red-600 flex justify-between items-center rounded-2xl gap-20"
             data-aos="fade-left" data-aos-duration="1000" data-aos-delay="1000">
             <div class="w-1/3">

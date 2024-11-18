@@ -34,7 +34,7 @@
     <title>Seameo Recfon</title>
 </head>
 
-<body class="bg-gray-50 overflow-x-hidden">
+<body class="bg-gray-100 overflow-x-hidden">
 
 
     @include('client.layout.navigation')
@@ -49,26 +49,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <script>
-        const swiper = new Swiper('.swiper', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-
-            // If we need pagination
-            pagination: {
-                el: '.swiper-pagination',
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-        });
-    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/assets/js/script.js"></script>
     <script>
         AOS.init();
     </script>

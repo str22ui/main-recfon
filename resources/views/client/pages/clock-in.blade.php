@@ -27,21 +27,21 @@
                 </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/2 grid grid-cols-2 gap-6">
-                <a href="" class="relative">
+                <a href="/clockinwfo" class="relative">
                     <img src="{{ asset('image/WFO.png') }}" alt="">
                     <p
                         class="absolute bottom-4 lg:bottom-10 left-4 lg:left-10 text-md md:text-xl lg:text-4xl font-bold text-white">
                         WFO
                     </p>
                 </a>
-                <a href="" class="relative">
+                <a href="/clockinwfh" class="relative">
                     <img src="{{ asset('image/WFH.png') }}" alt="">
                     <p
                         class="absolute bottom-4 lg:bottom-10 left-4 lg:left-10 text-md md:text-xl lg:text-4xl font-bold text-white">
                         WFH
                     </p>
                 </a>
-                <a href="" class="relative">
+                <a href="/clockinIzin" class="relative">
                     <img src="{{ asset('image/Sick-Leave.png') }}" alt="">
                     <p
                         class="absolute bottom-4 lg:bottom-10 left-4 lg:left-10 text-md md:text-xl lg:text-4xl font-bold text-white">
@@ -49,7 +49,7 @@
                         Leave
                     </p>
                 </a>
-                <a href="" class="relative">
+                <a href="/clockinDinas" class="relative">
                     <img src="{{ asset('image/FD.png') }}" alt="">
                     <p
                         class="absolute bottom-4 lg:bottom-10 left-4 lg:left-10 text-md md:text-xl lg:text-4xl font-bold text-white">
