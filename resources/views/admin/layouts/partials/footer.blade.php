@@ -2,10 +2,10 @@
 <footer>
 	<div class="footer clearfix mb-0 text-muted">
 		<div class="float-start">
-			<p>{{ date('Y') }} &copy; MMI Copyright</p>
+			<p>{{ date('Y') }} &copy; SEAMEO RECFON Copyright</p>
 		</div>
 		<div class="float-end">
-			<p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a href="#">MMI Copyright</a></p>
+			<p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a href="#">SEAMEO RECFON Copyright</a></p>
 		</div>
 	</div>
 </footer>

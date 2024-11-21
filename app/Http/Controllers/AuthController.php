@@ -46,26 +46,36 @@ class AuthController extends Controller
         return back()->with('loginError', 'Login Failed!');
     }
 
-    // public function authenticate(Request $request)
-    // {
-    //     $credentials = $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required'
-    //     ]);
+      // Tampilkan form reset password
+      public function showResetPasswordForm()
+      {
+          return view('login.resetPassword');
+      }
 
-    //     if (Auth::attempt($credentials)) {
-    //         $request->session()->regenerate();
-    //         $user = Auth::user();
+      // Proses reset password tanpa validasi email
+      public function resetPassword(Request $request)
+      {
+          $request->validate([
+              'login' => 'required', // Email atau no_mbkm
+              'password' => 'required|confirmed|min:8',
+          ]);
 
-    //         if ($user->role == 'admin') {
-    //             return redirect()->intended('/dashboard');
-    //         } elseif ($user->role == 'students') {
-    //             return redirect()->intended('/');
-    //         }
-    //     }
-    //     return back()->with('loginError', 'Login Failed!');
-    // }
+          // Tentukan apakah input adalah email atau no_mbkm
+          $loginType = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'no_mbkm';
 
+          // Cari user berdasarkan email atau no_mbkm
+          $user = User::where($loginType, $request->login)->first();
+
+          if (!$user) {
+              return back()->withErrors(['login' => 'User tidak ditemukan.']);
+          }
+
+          // Reset password
+          $user->password = Hash::make($request->password);
+          $user->save();
+
+          return redirect()->route('login')->with('status', 'Password berhasil direset. Silakan login.');
+      }
 
     public function logout(Request $request)
     {

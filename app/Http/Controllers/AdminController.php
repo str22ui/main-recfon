@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Divisi;
 use App\Models\College;
 use App\Models\User;
+use App\Models\Absent;
 
 class AdminController extends Controller
 {
@@ -13,6 +14,32 @@ class AdminController extends Controller
     public function indexAdmin()
     {
         return view('admin.index');
+    }
+
+    // =============== START ABSENSI ===============
+
+
+    // =============== END ABSENSI ===============
+    public function indexAbsent()
+    {
+
+        $absent = Absent::with('user')->get();
+        // $user = Auth::user();
+        return view('admin.absent.index', [
+            'absent' => $absent,
+        ]);
+    }
+
+    public function destroyAbsent(Request $request)
+    {
+        // Ambil ID dari request
+        $absent = Absent::findOrFail($request->id);
+
+        // Hapus data
+        $absent->delete();
+
+        // Redirect kembali dengan pesan sukses
+        return redirect('/absensi')->with('success', 'Berhasil Menghapus Absensi');
     }
     // =============== START STUDENTS ===============
     public function indexStudents()

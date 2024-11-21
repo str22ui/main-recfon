@@ -22,19 +22,32 @@
             <thead>
                 <tr>
                     <th class="col-sm-1">No</th>
-                    <th class="col-md-2">Student Had Studies</th>
-                    <th class="col-md-1">Student</th>
+                    <th class="col-md-2">Nama</th>
+                    <th class="col-md-1">Tipe Kerjaan</th>
+                    <th class="col-md-2">ClockIn</th>
                     <th class="col-md-2">Action</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($absent as $a )
 
                 <tr>
-                    <td>Halo</td>
-                    <td>Halo</td>
-                    <td>Halo</td>
-                    <td>Halo</td>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$a->user->name}}</td>
+                    <td>{{$a->typeWork}}</td>
+                    <td>{{$a->clockIn}}</td>
+                    <td>
+                        {{-- <form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="" method="POST"> --}}
+                            <form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="{{ route('admin.deleteAbsent') }}" method="POST">                            @csrf
+                            @csrf
+                            @method('DELETE')
+                            <!-- Input untuk mengirim ID Absen yang ingin dihapus -->
+                            <input type="hidden" name="id" value="{{ $a->id }}">
+                            <button type="submit" name="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
+                        </form>
+                    </td>
                 </tr>
+                @endforeach
 
             </tbody>
 		</table>

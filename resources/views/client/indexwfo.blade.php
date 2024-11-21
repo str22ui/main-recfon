@@ -124,5 +124,20 @@
             }
             event.target.classList.remove('border-blue-500');
         });
+
+        
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const userLat = position.coords.latitude;
+                const userLng = position.coords.longitude;
+
+                // Masukkan nilai ke dalam input hidden
+                document.getElementById('maps').value = `${userLat},${userLng}`;
+            },
+            (error) => {
+                alert('Geolocation tidak diizinkan. Anda harus mengaktifkan lokasi untuk absen.');
+            }
+        );
+
     </script>
 @endsection

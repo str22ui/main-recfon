@@ -22,15 +22,17 @@ Route::get('/', [FrontController::class, 'indexHome'])->name('home');
 Route::middleware('guest')->group(function () {
     Route::get('/loginUser', [AuthController::class, 'login'])->name('login');
     Route::post('/loginUser', [AuthController::class, 'authenticate']);
+    Route::get('/resetPassword', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
+    Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
 });
 
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
 
     Route::get('/dashboard', [AdminController::class, 'indexAdmin'])->name('admin.index');
-    Route::get('/absensi', function () {
-        return view('admin.absent.index');
-        });
+
+    Route::get('/absensi', [AdminController::class, 'indexAbsent'])->name('admin.absent');
+    Route::delete('/deleteAbsent', [AdminController::class, 'destroyAbsent'])->name('admin.deleteAbsent');
 
     Route::get('/students', [AdminController::class, 'indexStudents'])->name('admin.students');
     Route::get('/createStudents', [AdminController::class, 'createStudents'])->name('admin.createStudents');

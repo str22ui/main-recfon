@@ -46,8 +46,6 @@
                             <i class="bi bi-eye-fill"></i>
                         </a>
 
-
-
                         {{-- <a href="" class="btn btn-warning btn-sm"> --}}
                         <a href="{{ route('admin.editStudents', ['id' => $u->id]) }}" class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-square"></i>
