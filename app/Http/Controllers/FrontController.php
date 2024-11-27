@@ -125,8 +125,8 @@ class FrontController extends Controller
         }
 
         // Lokasi kantor
-        $officeLat = -6.194888;
-        $officeLng = 106.869249;
+        $officeLat = -6.194887430592075;
+        $officeLng = 106.86925220405539;
 
         // Lokasi pengguna dari input
         [$userLat, $userLng] = explode(',', $request->maps);
@@ -135,8 +135,8 @@ class FrontController extends Controller
         $distance = $this->calculateDistance($officeLat, $officeLng, $userLat, $userLng);
 
         // Validasi radius (misal, maksimal 1 km)
-        if ($distance > 1) {
-            return redirect()->back()->withErrors(['maps' => 'Anda berada di luar radius absen (1 km).']);
+        if ($distance > 3) {
+            return redirect()->back()->withErrors(['maps' => 'Anda berada di luar radius absen (3 km).']);
         }
 
         if ($request->hasFile('img')) {
