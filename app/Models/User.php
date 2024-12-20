@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Illuminate\Database\Eloquent\Model;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -18,11 +18,26 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'no_mbkm', 'name', 'email', 'password', 'role', 'divisi_id', 'college_id'
     ];
 
+    // Relasi ke Divisi
+    public function divisi()
+    {
+        return $this->belongsTo(Divisi::class);
+    }
+
+    // Relasi ke College
+    public function college()
+    {
+        return $this->belongsTo(College::class);
+    }
+
+    // Relasi ke Absent
+    public function absents()
+    {
+        return $this->hasMany(Absent::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
