@@ -1,36 +1,22 @@
 function addPekerjaan() {
-    const container = document.getElementById("pekerjaan-container"); // Container untuk input baru
-    const inputWrapper = document.createElement("div"); // Wrapper untuk input dan ikon
-    inputWrapper.classList.add("relative", "mb-5"); // Menambahkan kelas untuk styling
+    const container = document.getElementById("pekerjaan-container");
+    const newInput = document.createElement("div");
+    newInput.classList.add("flex", "items-center", "mb-4", "pekerjaan-item");
+    newInput.innerHTML = `
+    <input type="text" name="todaysActivity[]" placeholder="Masukkan pekerjaan tambahan"
+        class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 flex-grow p-2.5">
+    <button type="button" class="ml-2 px-3 py-1 text-white bg-red-500 hover:bg-red-700 rounded-lg font-bold text-sm" onclick="removePekerjaan(this)">-</button>`;
+    container.appendChild(newInput);
+}
 
-    const input = document.createElement("input"); // Membuat elemen input baru
-    input.type = "text";
-    input.name = "todaysActivity[]"; // Menggunakan array untuk menyimpan banyak input
-    input.placeholder = "Masukkan pekerjaan tambahan";
-    input.classList.add(
-        "form-control",
-        "bg-gray-50",
-        "border",
-        "border-gray-300",
-        "text-gray-900",
-        "text-sm",
-        "rounded-lg",
-        "focus:ring-blue-500",
-        "focus:border-blue-500",
-        "block",
-        "w-full",
-        "p-2.5",
-        "pl-10"
-    );
+function removePekerjaan(button) {
+    const container = document.getElementById("pekerjaan-container");
+    const pekerjaanItems = container.getElementsByClassName("pekerjaan-item");
 
-    // Ikon untuk input
-    const icon = document.createElement("span");
-    icon.classList.add("icon");
-    icon.innerHTML = '<i class="fas fa-user text-gray-400"></i>';
-
-    inputWrapper.appendChild(input); // Menambahkan input ke wrapper
-    inputWrapper.appendChild(icon); // Menambahkan ikon ke wrapper
-    container.appendChild(inputWrapper); // Menambahkan wrapper ke container
+    // Hanya menghapus jika jumlah pekerjaan lebih dari 1
+    if (pekerjaanItems.length > 0) {
+        button.parentElement.remove();
+    }
 }
 
 function setClockOutTime() {

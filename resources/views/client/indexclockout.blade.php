@@ -26,7 +26,7 @@
                 <div class="mb-5 relative">
                     <label for="user_id" class="form-label block mb-2 text-sm font-medium">User id</label>
                     <div class="input-with-icon">
-                        <input type="text" id="user_id" name="user_id"
+                    <input type="text" id="user_id" name="user_id"
                             class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10 "
                             placeholder="Masukkan nama" required value="{{ Auth::user()->id }}">
                         <span class="icon">
